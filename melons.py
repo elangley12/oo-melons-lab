@@ -26,7 +26,7 @@ class AbstractMelonOrder:
        
         if self.order_type == "international" and self.qty < 10:
             total = total + 3
-            
+
         return total
 
     def mark_shipped(self):
@@ -58,3 +58,17 @@ class InternationalMelonOrder(AbstractMelonOrder):
 
         return self.country_code
 
+class GovernmentMelonOrder(AbstractMelonOrder):
+    
+    tax = 0
+    order_type = "domestic"
+    
+    def __init__(self, species, qty, passed_inspection):
+        super().__init__(species, qty)
+        self.passed_inspection = False
+
+    def mark_inspection(self, passed):
+        if passed == True:
+            self.passed_inspection = True
+        else:
+            self.passed_inspection = False
