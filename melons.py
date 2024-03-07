@@ -62,8 +62,8 @@ class GovernmentMelonOrder(AbstractMelonOrder):
     
     tax = 0
     order_type = "domestic"
-    
-    def __init__(self, species, qty, passed_inspection):
+
+    def __init__(self, species, qty):
         super().__init__(species, qty)
         self.passed_inspection = False
 
